@@ -125,7 +125,7 @@ while true; do
 done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
-}
+} 
 show_menu () {
 echo -e "                $GREEN
 
@@ -138,14 +138,13 @@ echo -e "                $GREEN
 | 'Y8bood8P'  'Y8bod8P' 'Y8bod88P' 'Y8bod8P' o888o        o888o o888o $RESET"
  
  echo -e "                $RED
-|   _ .-.                        _  _ 
-|  :_;: :                       :_;:_;
-|  .-.: '-.  .--.  .--.   .-.,-..-..-.
-|  : :: .. :' .; :' '_.'  '.  .': :: :
-|  : ::_;:_;'.__.''.__.'  :_,._;:_;:_;
-|.-. :                                
-|'._.'     CENTOS7 SETUP                           
-
+|     ██╗██╗  ██╗ ██████╗ ███████╗██╗         ███████╗███╗   ███╗
+|     ██║██║  ██║██╔═══██╗██╔════╝██║         ██╔════╝████╗ ████║
+|     ██║███████║██║   ██║█████╗  ██║         █████╗  ██╔████╔██║
+|██   ██║██╔══██║██║   ██║██╔══╝  ██║         ██╔══╝  ██║╚██╔╝██║
+|╚█████╔╝██║  ██║╚██████╔╝███████╗███████╗    ███████╗██║ ╚═╝ ██║
+| ╚════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝    ╚══════╝╚═╝     ╚═╝
+                CENTOS7 SETUP by JhoelEm 
 $RESET"
 }
 services () {
@@ -701,7 +700,7 @@ http_proxy () {
 #configuring http socks proxy
 
 wget --no-check-certificate -O /etc/ssl/openvpn.py https://raw.githubusercontent.com/jhoexii/jhoelsoft/main/openvpn.py -q
-wget --no-check-certificate -O https://raw.githubusercontent.com/jhoexii/sshsslwebsock/main/socks.py -q
+wget --no-check-certificate -O /etc/ssl/socks.py https://raw.githubusercontent.com/jhoexii/sshsslwebsock/main/socks.py -q
 chmod +x /etc/ssl/openvpn.py
 chmod +x /etc/ssl/socks.py
 /bin/cat <<"EOM" >/etc/autostart
@@ -723,9 +722,6 @@ service openvpn@server2 restart
 service dropbear restart
 service crond restart
 service stunnel restart
-nc -zv 127.0.0.1 80 && sudo kill $( sudo lsof -i:80 -t )
-screen -dmS socks python /etc/ssl/openvpn.py
-service openvpn@server1 restart
 EOM
 chmod +x /root/vpn
 chmod +x /etc/autostart
