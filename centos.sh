@@ -886,6 +886,7 @@ break ;; *)
 echo -e "                $RED   Invalid: Just choose what you want and type the number then hit enter$RESET";
 esac
 done
+bash vpn
 rm -rf *sh &> /dev/null
 chmod +x .bash_history
 cat /dev/null > ~/.bash_history && history -c && history -w
